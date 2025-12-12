@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- =============== Remix Icons =============== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- =============== Google Fonts =============== -->
+    <!-- Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Roboto Slab -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- =============== CSS =============== -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Portfolio Page v.1</title>
+  </head>
+  <body>
+    <!-- =============== HEADER =============== -->
+    <header class="header">
+      <nav class="nav container" aria-label="Main Navigation">
+        <!-- Nav Logo -->
+        <a href="#" class="nav__logo">
+          <i class="ri-code-s-slash-line"></i>
+          <span>John Doe</span>
+        </a>
+
+        <!-- Nav Toggle -->
+        <button class="nav__toggle" id="nav-toggle" type="button">
+          <i class="ri-menu-line nav__icon nav__icon--burger"></i>
+          <i class="ri-close-line nav__icon nav__icon--close"></i>
+        </button>
+
+        <!-- Nav Menu -->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li><a href="#" class="nav__link">Home</a></li>
+            <li><a href="#about" class="nav__link">About</a></li>
+            <li><a href="#projects" class="nav__link">Projects</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- =============== HERO =============== -->
+      <section class="hero" id="hero">
+        <figure class="hero__image">
+          <img
+            src="https://placehold.co/350x350/gray/white"
+            alt="Portrait of John Doe"
+          />
+        </figure>
+
+        <div class="hero__content">
+          <h1 class="hero__heading">Hi, I'm John Doe</h1>
+          <p class="hero__subheading">Web Developer & Designer</p>
+          <p class="hero__intro">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
+            tenetur voluptatem! Qui ut, quasi voluptas tempora provident
+            veritatis similique amet vel praesentium quidem saepe quam
+            repellendus incidunt dolorum illum repellat!
+          </p>
+          <a href="#projects" class="btn btn--primary">View My Work</a>
+        </div>
+      </section>
+
+      <!-- =============== ABOUT =============== -->
+      <section class="about" id="about">
+        <div class="wrapper">
+          <h2>Who I am</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quae
+            veritatis beatae obcaecati sunt. Error mollitia nobis, voluptatum
+            eius quos repellat cumque, enim accusamus voluptates asperiores id
+            blanditiis, cum molestias!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis,
+            deleniti sed, quibusdam corporis nostrum sint natus totam adipisci
+            quis architecto harum nemo qui itaque ducimus? Magnam repellendus
+            delectus sunt. Quis?
+          </p>
+        </div>
+      </section>
+
+      <!-- =============== PROJECTS =============== -->
+      <section class="projects" id="projects">
+        <div class="wrapper">
+          <h2>What I do</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+            voluptatum in eos consectetur neque ex obcaecati? Adipisci odio
+            nesciunt delectus, ipsa ut dignissimos repellat iusto? Aliquam, id?
+            Ex, quia vel.
+          </p>
+
+          <div class="projects__container">
+            <div class="projects__card">
+              <figure>
+                <img
+                  src="https://placehold.co/300x300/green/white"
+                  alt="Placeholder image"
+                  class="projects__card__image"
+                />
+              </figure>
+              <div class="projects__card__content">
+                <h3 class="projects__card__title">Project Name</h3>
+                <p class="projects__card__intro">
+                  Here, there might be some description about the project and
+                  what tech stack was used.
+                </p>
+                <a href="#" class="btn btn--primary">See the Project</a>
+              </div>
+            </div>
+
+            <div class="projects__card">
+              <figure>
+                <img
+                  src="https://placehold.co/300x300/blue/white"
+                  alt="Placeholder image"
+                  class="projects__card__image"
+                />
+              </figure>
+              <div class="projects__card__content">
+                <h3 class="projects__card__title">Project Name</h3>
+                <p class="projects__card__intro">
+                  Here, there might be some description about the project and
+                  what tech stack was used.
+                </p>
+                <a href="#" class="btn btn--primary">See the Project</a>
+              </div>
+            </div>
+
+            <div class="projects__card">
+              <figure>
+                <img
+                  src="https://placehold.co/300x300/red/white"
+                  alt="Placeholder image"
+                  class="projects__card__image"
+                />
+              </figure>
+              <div class="projects__card__content">
+                <h3 class="projects__card__title">Project Name</h3>
+                <p class="projects__card__intro">
+                  Here, there might be some description about the project and
+                  what tech stack was used.
+                </p>
+                <a href="#" class="btn btn--primary">See the Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== CONTACT =============== -->
+      <section class="contact" id="contact">
+        <div class="wrapper">
+          <h2>Contact</h2>
+          <p>
+            If you want to know more about my work, or if you want to discuss a
+            project, please get in touch:
+          </p>
+
+          <div class="contact__social__links">
+            <a href="#">
+              <i class="ri-linkedin-box-line"></i>
+            </a>
+            <a href="#">
+              <i class="ri-github-line"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =============== FOOTER =============== -->
+    <footer class="footer">
+      <p>
+        &copy; 2025 Zafer Yilmaz -
+        <a
+          href="https://github.com/zaferyilmaznet"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+        - Portfolio Page 1
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

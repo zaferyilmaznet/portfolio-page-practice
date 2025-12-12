@@ -1,0 +1,467 @@
+/* =============== VARIABLES =============== */
+:root {
+  /* ===== BASE ===== */
+  --color-bg: #060619; /* deep space background */
+  --color-surface: #0e0b2b; /* section surface, slightly lighter */
+
+  /* ===== ACCENTS ===== */
+  --color-accent-primary: #6c4bf4; /* glowing violet */
+  --color-accent-secondary: #15d1e2; /* electric cyan */
+  --color-accent-green: #0eea83; /* neon green (for balance / highlights) */
+  --color-accent-pink: #ff4df3; /* magenta spark (for subtle contrast) */
+
+  /* ===== TEXT ===== */
+  --color-text-base: #eae9fc; /* soft white for main text */
+  --color-text-muted: #9a96c9; /* dimmer / secondary text */
+
+  /* ===== NEUTRALS ===== */
+  --color-border: #2a2850;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Typography */
+  --font-heading: "Roboto Slab", Georgia, serif;
+  --font-body: "Roboto", Verdana, sans-serif;
+  --font-size-md: 0.95rem;
+}
+
+/* =============== RESET =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =============== BASE =============== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  background-color: var(--color-bg);
+  color: var(--color-text-base);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-accent-primary);
+}
+
+h2 {
+  font-size: xx-large;
+  font-family: var(--font-heading);
+}
+
+h3 {
+  font-family: var(--font-heading);
+}
+
+p {
+  line-height: 1.7rem;
+}
+
+/* =============== UTILITIES =============== */
+.btn {
+  display: inline-block;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  color: var(--color-accent-primary);
+}
+
+.btn--primary {
+  background-color: var(--color-bg);
+}
+.btn--primary:hover {
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-base);
+  box-shadow: 0 0 12px var(--color-accent-primary);
+}
+
+/* =============== HEADER =============== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-bg);
+  box-shadow: 0 5px 16px hsla(222, 62%, 42%, 0.3); /* check how it looks */
+  z-index: 100;
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: 70rem; /* ~1120px, prevents over-wide layouts, standard content width */
+  padding-inline: 1.5rem;
+  margin-inline: auto; /* centers horizontally */
+}
+
+/* Nav - wraps logo, toggle, and menu */
+.nav {
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  font-weight: bold;
+  white-space: nowrap; /* prevent line break inside the logo */
+  flex-shrink: 0; /* do not allow logo to shrink */
+}
+.nav__logo i {
+  font-weight: initial;
+  font-size: 1.25rem;
+}
+
+/* Toggle Button */
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.nav__icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  font-size: 1.25rem;
+  color: var(--color-text-base);
+  transition: opacity 0.2s, transform 0.4s;
+  width: max-content;
+  height: max-content;
+}
+.nav__icon--close {
+  opacity: 0;
+}
+
+/* =============== Mobile Menu (Default) =============== */
+.nav__menu {
+  position: absolute;
+  left: 0;
+  top: 3.5rem;
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+  background-color: var(--color-bg);
+  overflow-y: auto;
+  opacity: 0; /* invisible as default*/
+  pointer-events: none;
+  transition: opacity 0.3s ease, top 0.4s ease;
+  z-index: 999;
+}
+.nav__menu::-webkit-scrollbar {
+  width: 0;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__link {
+  color: var(--color-accent-primary);
+  font-weight: 700;
+  padding: 1.25rem 1.5rem;
+  display: flex; /* In case there will be an icon element for submenu. Otherwise, display: block; would be fine. */
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.nav__link:hover {
+  background-color: var(--color-accent-secondary);
+  color: var(--color-bg);
+}
+
+/* Show/Hide Menu with Toggle Button */
+.nav__menu--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav__toggle--active .nav__icon--burger {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.nav__toggle--active .nav__icon--close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* =============== HERO =============== */
+.hero {
+  position: relative;
+  overflow: hidden; /* contain the shine effect */
+  isolation: isolate; /* ensures background stays behind content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  min-height: 100vh;
+  padding-top: calc(3.5rem + 2rem); /* account for fixed header */
+  padding-bottom: 2rem;
+  background-image: linear-gradient(135deg, #090921, #2c1b63, #090921);
+  background-size: 200% 200%;
+  animation: bgShift 20s ease-in-out infinite alternate;
+}
+
+/* animation layer */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+      circle at 25% 35%,
+      rgba(0, 150, 255, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(circle at 70% 40%, rgba(255, 0, 200, 0.3), transparent 70%),
+    radial-gradient(circle at 50% 80%, rgba(120, 0, 255, 0.25), transparent 80%);
+  filter: blur(140px) saturate(180%);
+  animation: nebulaFlow 20s ease-in-out infinite alternate;
+  background-size: 200% 200%;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+@keyframes nebulaFlow {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1.05);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes bgShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.hero__image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem 1rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__heading {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+}
+
+.hero__subheading {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+}
+
+.hero__intro {
+  line-height: 1.7;
+}
+
+/* =============== SECTIONS =============== */
+/* ==== Section Wrapper ==== */
+.wrapper {
+  width: 100%;
+  max-width: 70rem; /* ~1120px, prevents over-wide layouts, standard content width */
+  padding: 4rem 1.5rem;
+  margin-inline: auto; /* centers horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* =============== ABOUT =============== */
+.about {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-accent-primary),
+    var(--color-bg)
+  );
+  padding-block: 4rem;
+}
+
+/* =============== PROJECTS =============== */
+.projects {
+  background-color: var(--color-surface);
+  padding-block: 4rem;
+}
+
+.projects__container {
+  display: grid;
+  /* Automatically fits as many cards as possible */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center; /* centers grid items horizontally - didn't work! */
+  align-content: start;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.projects__card {
+  background-color: var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 350px;
+  margin-inline: auto; /* this also centers in fallback - this works! */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Hover lift effect */
+.projects__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(108, 75, 244, 0.4);
+}
+
+.projects__card__image {
+  border-radius: 0.5rem;
+  width: 100%; /* enable the image to resize */
+  object-fit: cover;
+}
+
+.projects__card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.projects__card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+}
+
+.projects__card__intro {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* =============== CONTACT =============== */
+.contact {
+  text-align: center;
+  padding-block: 4rem;
+}
+.contact__social__links {
+  font-size: 3rem;
+}
+
+/* =============== FOOTER =============== */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* =============== Desktop View (≥ 820px) =============== */
+@media (min-width: 820px) {
+  /* ==== Header Navigation ==== */
+  .nav {
+    /* height: calc(3.5rem + 1rem); */
+    display: flex; /* align elements in one row */
+    align-items: center;
+  }
+
+  /* hide toggle button */
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+    background: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 3rem;
+  }
+
+  .nav__link {
+    padding: 0;
+    background: none;
+    transition: color 0.2s ease;
+  }
+  .nav__link:hover {
+    background: transparent;
+    /* text-decoration: underline; */
+    color: chocolate;
+  }
+
+  /* ==== Hero ==== */
+  .hero {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem; /* add space between image and text */
+    text-align: left;
+  }
+
+  .hero__image img {
+    max-width: 100%;
+  }
+
+  .hero__content {
+    align-items: flex-start;
+  }
+}
+
+/* =============== FROM JAVASCRIPT =============== */
+.no-scroll {
+  overflow: hidden;
+}
